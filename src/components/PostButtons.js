@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PostInteraction = () => {
+const PostButtons = () => {
     return (
         <div>
             <button>Like</button>
@@ -9,4 +9,4 @@ const PostInteraction = () => {
     );
 };
 
-export default PostInteraction;
+export default PostButtons;
