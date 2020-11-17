@@ -1,4 +1,6 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import PostInteraction from './PostInteraction';
 
 const Posts = () => {
     // const [post, setPost] = useState();
@@ -13,7 +15,9 @@ const Posts = () => {
 
     return (
         <div>
-            <h3>OMG my first message on Orange</h3>
+            <p>OMG my first post on Orange</p>
+            <Route path="/" component={PostInteraction} />
+
         </div>
     );
 };
