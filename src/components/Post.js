@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import PostInteraction from './PostInteraction';
+import PostButtons from './PostButtons';
 
-const Posts = () => {
+
+const Post = () => {
     // const [post, setPost] = useState();
     // const url = `posts`
 
@@ -16,10 +17,10 @@ const Posts = () => {
     return (
         <div>
             <p>OMG my first post on Orange</p>
-            <Route path="/" component={PostInteraction} />
+            <Route path="/" component={PostButtons} />
 
         </div>
     );
 };
 
-export default Posts;
+export default Post;
