@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import PostButtons from './PostButtons';
 
+
 const Post = () => {
 	return (
 		<div>
@@ -12,3 +13,4 @@ const Post = () => {
 };
 
 export default Post;
+

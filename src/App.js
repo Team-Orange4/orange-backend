@@ -1,10 +1,14 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+
 import Feed from './components/Feed';
 import Navbar from './components/Navbar';
+
 import './App.css';
 
+
 function App() {
+
 	return (
 		<div className='App'>
 			<Navbar />
@@ -13,6 +17,7 @@ function App() {
 			</main>
 		</div>
 	);
+
 }
 
 export default App;
