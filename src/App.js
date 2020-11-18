@@ -5,7 +5,7 @@ import Feed from './components/Feed';
 import NavComponent from './components/NavComponent';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
-import CreateAccount from './components/Login';
+import CreateAccount from './components/CreateAccount';
 
 
 import './App.scss';
@@ -45,13 +45,13 @@ function App() {
 	return (
 		<div className='App'>
       {(user.email != "") ? (
-        <div className="welcome">
-          <h2> Welcome, <span>{user.name}</span></h2>
-          <button onClick={Logout}>Logout</button>
-        </div>
+        <Feed />
       ) : (
         <Login LoginForm={LoginForm} error={error}/>
       )}
+      <main>
+        <Route path="/create" component={CreateAccount} />
+      </main>
 		</div>
 	);
 

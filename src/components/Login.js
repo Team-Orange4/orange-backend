@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 const Login = ({ LoginForm, error}) => {
 	const [details, setDetails] = useState({name: "", email: "", password: ""});
 
@@ -8,10 +10,12 @@ const Login = ({ LoginForm, error}) => {
 	}
 
 	return (
+		<div>
+			<h1>Welcome to Orange</h1>
 		<form onSubmit={submitHandler}>
 			<div className='form-inner'>
 				<h2>Login</h2>
-	{(error != "") ? (<div className="error">{error}</div>) : ""}
+				{(error != "") ? (<div className="error">{error}</div>) : ""}
 				<div className='form-group'>
 					<label htmlFor='name'>Name:</label>
 					<input
@@ -51,6 +55,9 @@ const Login = ({ LoginForm, error}) => {
 				<input type='submit' value='LOGIN' />
 			</div>
 		</form>
+		<h2>Don't have an account yet?</h2>
+		<Link to="/create">Sign Up</Link>
+		</div>
 	);
 };
 

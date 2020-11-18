@@ -12,7 +12,6 @@ const CreateAccount = () => {
                 <button type="submit">Create Account</button>
 
             </form>
-            
         </div>
     );
 };
