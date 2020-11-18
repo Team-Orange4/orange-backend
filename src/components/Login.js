@@ -1,16 +1,56 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import React, { useState } from 'react';
+const Login = ({ LoginForm, error}) => {
+	const [details, setDetails] = useState({name: "", email: "", password: ""});
 
-const Login = () => {
+	const submitHandler = (event) => {
+		event.preventDefault();
+		LoginForm(details);
+	}
+
 	return (
-		<div>
-			<form>
-				Email:
-				<input type='text' />
-				Password:
-				<input type='password' />
-			</form>
-		</div>
+		<form onSubmit={submitHandler}>
+			<div className='form-inner'>
+				<h2>Login</h2>
+	{(error != "") ? (<div className="error">{error}</div>) : ""}
+				<div className='form-group'>
+					<label htmlFor='name'>Name:</label>
+					<input
+						type='text'
+						name='name'
+						id='name'
+						onChange={(event) =>
+							setDetails({ ...details, name: event.target.value })
+						}
+						value={details.name}
+					/>
+				</div>
+				<div className='form-group'>
+					<label htmlFor='email'>Email: </label>
+					<input
+						type='email'
+						name='email'
+						id='email'
+						onChange={(event) =>
+							setDetails({ ...details, email: event.target.value })
+						}
+						value={details.email}
+					/>
+				</div>
+				<div className='form-group'>
+					<label htmlFor='password'>Password:</label>
+					<input
+						type='password'
+						name='password'
+						id='password'
+						onChange={(event) =>
+							setDetails({ ...details, password: event.target.value })
+						}
+						value={details.password}
+					/>
+				</div>
+				<input type='submit' value='LOGIN' />
+			</div>
+		</form>
 	);
 };
 
