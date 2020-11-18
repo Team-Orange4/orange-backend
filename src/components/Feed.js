@@ -11,7 +11,7 @@ const Feed = () => {
 	//         .catch(console.error)
 	// }, []);
 	return (
-		<div className='feed'>
+		<div >
 			{post.map((post) => {
 				return <Post />;
 			})}
