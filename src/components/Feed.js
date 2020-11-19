@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Post from './Post';
 const Feed = () => {
-	const [post, setPost] = useState([{}]);
+	const [post, setPost] = useState([{}, {}, {}, {}, {}]);
 	// const url = `posts`
 
 	// useEffect(() => {

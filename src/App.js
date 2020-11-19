@@ -2,15 +2,15 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import Feed from './components/Feed';
-import Navbar from './components/Navbar';
+import NavComponent from './components/NavComponent';
 
-import './App.css';
+import './App.scss';
 
 function App() {
 	return (
 		<div className='App'>
-			<Navbar />
-			<main className='feed'>
+			<NavComponent />
+			<main>
 				<Route path='/' component={Feed} />
 			</main>
 		</div>
