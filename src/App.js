@@ -16,6 +16,7 @@ function App() {
       <main>
         <Route path="/" exact component={Login} />
         <Route path="/create" component={CreateAccount} />
+        <Route path="/feed" component={Feed} />
       </main>
 		</div>
 	);

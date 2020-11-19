@@ -1,87 +1,88 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect,useHistory } from 'react-router-dom';
 import './Login.css';
+import axios from 'axios';
+
 
 const Login = () => {
-	const initialState = {
-		username: '',
-		password: '',
-		passwordConfirm: '',
-		valid: false,
-		attempted: false,
-	};
-	const [formState, setFormState] = useState(initialState);
+	const [loginInfo, setLoginInfo] = useState({});
+	let history = useHistory();
+
 	function handleChange(event) {
 		event.preventDefault();
-		setFormState({ ...formState, [event.target.id]: event.target.value });
+		setLoginInfo({ ...loginInfo, [event.target.id]: event.target.value });
 	}
-	function handleConfirmChange(event) {
-		event.preventDefault();
-		setFormState({ ...formState, [event.target.id]: event.target.value });
-		if (event.target.value === formState.password) {
-			setFormState({
-				...formState,
-				[event.target.id]: event.target.value,
-				valid: true,
-			});
-		} else {
-			setFormState({
-				...formState,
-				[event.target.id]: event.target.value,
-				valid: false,
-				attempted: true,
-			});
-		}
-	}
+	// function handleConfirmChange(event) {
+	// 	event.preventDefault();
+	// 	setLoginInfo({ ...loginInfo, [event.target.id]: event.target.value });
+	// 	if (event.target.value === loginInfo.password) {
+	// 		setLoginInfo({
+	// 			...loginInfo,
+	// 			[event.target.id]: event.target.value,
+	// 			valid: true,
+	// 		});
+	// 	} else {
+	// 		setLoginInfo({
+	// 			...loginInfo,
+	// 			[event.target.id]: event.target.value,
+	// 			valid: false,
+	// 			attempted: true,
+	// 		});
+	// 	}
+	// }
 	function handleCancel(event) {
-		setFormState(initialState);
+		setLoginInfo("");
 	}
 	function handleSubmit(event) {
 		event.preventDefault();
-		if (formState.password === formState.passwordConfirm) {
-			alert(`Welcome ${formState.username}!`);
-			handleCancel(event);
-		} else {
-			setFormState({ ...formState, valid: false });
-		}
+		axios({
+			method: "POST",
+			url: "http://localhost:8000/users/login",
+			data: {email: loginInfo.email, password: loginInfo.password}
+		}).then((res) => {
+			console.log(res);
+			if(res.data.accessToken){history.push("/feed")}
+			// if(res.data.accessToken){return <Redirect to="/feed"/>}
+		});
 	}
+
 	return (
 		<div className='form'>
 			<h1>Welcome to Orange</h1>
 			<form onSubmit={handleSubmit}>
 				<input
-					type='text'
-					placeholder='Username'
-					id='username'
+					type='email'
+					placeholder='Email'
+					id='email'
 					onChange={handleChange}
-					value={formState.username}
+					value={loginInfo.username}
 				/>
-				<label htmlFor='username'>Username</label>
+				<label htmlFor='email'>Email</label>
 				<input
 					type='password'
 					placeholder='Password'
 					id='password'
 					onChange={handleChange}
-					value={formState.password}
+					value={loginInfo.password}
 				/>
 				<label htmlFor='password'>Password</label>
-				<input
+				{/* <input
 					type='password'
 					placeholder='Confirm password'
 					id='passwordConfirm'
 					onChange={handleConfirmChange}
-					value={formState.passwordConfirm}
-				/>
-				<label htmlFor='passwordConfirm'>Confirm password</label>
+					value={loginInfo.passwordConfirm}
+				/> */}
+				{/* <label htmlFor='passwordConfirm'>Confirm password</label> */}
 				<button type='submit'>Login</button>
 				<button type='button' onClick={handleCancel} className='cancel'>
 					Cancel
 				</button>
 				<p
 					style={
-						formState.attempted ? { display: 'block' } : { display: 'none' }
+						loginInfo.attempted ? { display: 'block' } : { display: 'none' }
 					}
-					className={formState.valid ? 'valid' : 'invalid'}>
+					className={loginInfo.valid ? 'valid' : 'invalid'}>
 					Passwords must match.
 				</p>
 			</form>
