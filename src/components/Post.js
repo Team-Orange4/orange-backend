@@ -1,16 +1,23 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import PostButtons from './PostButtons';
+import Card from 'react-bootstrap/Card';
 
+import PostButtons from './PostButtons';
 
 const Post = () => {
 	return (
 		<div>
-			<p>OMG my first post on Orange</p>
-			<Route path='/' component={PostButtons} />
+			<Card border='warning'>
+				<Card.Header>username</Card.Header>
+				<Card.Body>
+					<Card.Text>OMG my first post on Orange</Card.Text>
+				</Card.Body>
+				<Card.Footer>
+					<Route path='/' component={PostButtons} />
+				</Card.Footer>
+			</Card>
 		</div>
 	);
 };
 
 export default Post;
-
