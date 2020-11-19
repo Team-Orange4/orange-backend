@@ -1,62 +1,92 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './Login.css';
 
-const Login = ({ LoginForm, error}) => {
-	const [details, setDetails] = useState({name: "", email: "", password: ""});
-
-	const submitHandler = (event) => {
+const Login = () => {
+	const initialState = {
+		username: '',
+		password: '',
+		passwordConfirm: '',
+		valid: false,
+		attempted: false,
+	};
+	const [formState, setFormState] = useState(initialState);
+	function handleChange(event) {
 		event.preventDefault();
-		LoginForm(details);
+		setFormState({ ...formState, [event.target.id]: event.target.value });
 	}
-
+	function handleConfirmChange(event) {
+		event.preventDefault();
+		setFormState({ ...formState, [event.target.id]: event.target.value });
+		if (event.target.value === formState.password) {
+			setFormState({
+				...formState,
+				[event.target.id]: event.target.value,
+				valid: true,
+			});
+		} else {
+			setFormState({
+				...formState,
+				[event.target.id]: event.target.value,
+				valid: false,
+				attempted: true,
+			});
+		}
+	}
+	function handleCancel(event) {
+		setFormState(initialState);
+	}
+	function handleSubmit(event) {
+		event.preventDefault();
+		if (formState.password === formState.passwordConfirm) {
+			alert(`Welcome ${formState.username}!`);
+			handleCancel(event);
+		} else {
+			setFormState({ ...formState, valid: false });
+		}
+	}
 	return (
-		<div>
+		<div className='form'>
 			<h1>Welcome to Orange</h1>
-		<form onSubmit={submitHandler}>
-			<div className='form-inner'>
-				<h2>Login</h2>
-				{(error != "") ? (<div className="error">{error}</div>) : ""}
-				<div className='form-group'>
-					<label htmlFor='name'>Name:</label>
-					<input
-						type='text'
-						name='name'
-						id='name'
-						onChange={(event) =>
-							setDetails({ ...details, name: event.target.value })
-						}
-						value={details.name}
-					/>
-				</div>
-				<div className='form-group'>
-					<label htmlFor='email'>Email: </label>
-					<input
-						type='email'
-						name='email'
-						id='email'
-						onChange={(event) =>
-							setDetails({ ...details, email: event.target.value })
-						}
-						value={details.email}
-					/>
-				</div>
-				<div className='form-group'>
-					<label htmlFor='password'>Password:</label>
-					<input
-						type='password'
-						name='password'
-						id='password'
-						onChange={(event) =>
-							setDetails({ ...details, password: event.target.value })
-						}
-						value={details.password}
-					/>
-				</div>
-				<input type='submit' value='LOGIN' />
-			</div>
-		</form>
-		<h2>Don't have an account yet?</h2>
-		<Link to="/create">Sign Up</Link>
+			<form onSubmit={handleSubmit}>
+				<input
+					type='text'
+					placeholder='Username'
+					id='username'
+					onChange={handleChange}
+					value={formState.username}
+				/>
+				<label htmlFor='username'>Username</label>
+				<input
+					type='password'
+					placeholder='Password'
+					id='password'
+					onChange={handleChange}
+					value={formState.password}
+				/>
+				<label htmlFor='password'>Password</label>
+				<input
+					type='password'
+					placeholder='Confirm password'
+					id='passwordConfirm'
+					onChange={handleConfirmChange}
+					value={formState.passwordConfirm}
+				/>
+				<label htmlFor='passwordConfirm'>Confirm password</label>
+				<button type='submit'>Login</button>
+				<button type='button' onClick={handleCancel} className='cancel'>
+					Cancel
+				</button>
+				<p
+					style={
+						formState.attempted ? { display: 'block' } : { display: 'none' }
+					}
+					className={formState.valid ? 'valid' : 'invalid'}>
+					Passwords must match.
+				</p>
+			</form>
+			<h4>Don't Have An Account?</h4>
+			<Link to="/create">Create Account</Link>
 		</div>
 	);
 };
