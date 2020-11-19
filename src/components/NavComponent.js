@@ -13,7 +13,7 @@ const NavComponent = () => {
 					<Nav.Link href='#home'>Home</Nav.Link>
 					<Nav.Link href='#login'>Login</Nav.Link>
 					<Nav.Link href='#profile'>Profile</Nav.Link>
-					<Nav.Link href='#modal'>Create a Post</Nav.Link>
+					<button>Create a Post</button>
 				</Nav>
 			</Navbar>
 			{/* <Link>Home</Link> <br />

@@ -8,9 +8,8 @@ const Post = () => {
 	return (
 		<div>
 			<Card border='warning'>
-				<Card.Header>post title option 1</Card.Header>
+				<Card.Header>username</Card.Header>
 				<Card.Body>
-					<Card.Title>post title option 2</Card.Title>
 					<Card.Text>OMG my first post on Orange</Card.Text>
 				</Card.Body>
 				<Card.Footer>
