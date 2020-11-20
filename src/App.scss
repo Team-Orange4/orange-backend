@@ -10,8 +10,10 @@ $theme-colors: (
 }
 
 body {
+	min-height: 100vh;
 	background-image: url('oranges.jpg');
-	background-size: contain;
+	background-size: cover;
+	background-attachment: fixed;
 }
 @media only screen and (min-width: 600px) {
 	main {
@@ -31,7 +33,6 @@ body {
 main {
 	margin-top: 75px;
 	background-color: orange;
-	overflow: scroll;
 }
 button {
 	background-color: yellow;

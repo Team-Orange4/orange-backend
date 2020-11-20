@@ -4,13 +4,14 @@ import Card from 'react-bootstrap/Card';
 
 import PostButtons from './PostButtons';
 
-const Post = () => {
+const Post = ({title, body}) => {
 	return (
 		<div>
 			<Card border='warning'>
 				<Card.Header>username</Card.Header>
 				<Card.Body>
-					<Card.Text>OMG my first post on Orange</Card.Text>
+					<Card.Title>{title}</Card.Title>
+					<Card.Text>{body}</Card.Text>
 				</Card.Body>
 				<Card.Footer>
 					<Route path='/' component={PostButtons} />
