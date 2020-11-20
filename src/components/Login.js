@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Link, Redirect,useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
-
 
 const Login = () => {
 	const [loginInfo, setLoginInfo] = useState({});
@@ -31,20 +30,21 @@ const Login = () => {
 	// 	}
 	// }
 	function handleCancel(event) {
-		setLoginInfo("");
+		setLoginInfo('');
 	}
 	function handleSubmit(event) {
 		event.preventDefault();
 		axios({
-			method: "POST",
-			url: "http://localhost:8000/users/login",
-			data: {email: loginInfo.email, password: loginInfo.password}
+			method: 'POST',
+			url: 'http://localhost:8000/users/login',
+			data: { email: loginInfo.email, password: loginInfo.password },
 		}).then((res) => {
 			console.log(res);
-			if(res.data.accessToken){
-				localStorage.setItem("token", res.data.accessToken);
-				history.push("/feed")
-				}
+			if (res.data.accessToken) {
+				localStorage.setItem('token', res.data.accessToken);
+				localStorage.setItem('id', res.data.id);
+				history.push('/feed');
+			}
 			// if(res.data.accessToken){return <Redirect to="/feed"/>}
 		});
 	}
@@ -90,7 +90,7 @@ const Login = () => {
 				</p>
 			</form>
 			<h4>Don't Have An Account?</h4>
-			<Link to="/create">Create Account</Link>
+			<Link to='/create'>Create Account</Link>
 		</div>
 	);
 };
