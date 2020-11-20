@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Post from './Post';
 import axios from 'axios';
+import { apiUrl } from '../config';
 
 const Feed = ({ refresh, setRefresh }) => {
 	const [post, setPost] = useState([]);
@@ -9,7 +10,7 @@ const Feed = ({ refresh, setRefresh }) => {
 		if (refresh) {
 			axios({
 				method: 'GET',
-				url: 'http://localhost:8000/posts',
+				url: `${apiUrl}/posts`,
 			})
 				.then((res) => setPost(res.data.reverse()))
 				.then(() => setRefresh(false));

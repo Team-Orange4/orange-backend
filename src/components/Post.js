@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import EditModal from './EditModal';
 import PostButtons from './PostButtons';
+import { apiUrl } from '../config';
 
 const Post = ({ postId, userId, username, title, body, setRefresh }) => {
 	const [show, setShow] = useState(false);
@@ -16,7 +17,7 @@ const Post = ({ postId, userId, username, title, body, setRefresh }) => {
 	function Delete() {
 		axios({
 			method: 'DELETE',
-			url: `http://localhost:8000/posts/${postId}`,
+			url: `${apiUrl}/posts/${postId}`,
 		}).then(() => setRefresh(true));
 	}
 
