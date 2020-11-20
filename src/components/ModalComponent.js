@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BootstrapModal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { apiUrl } from '../config';
 
 const ModalComponent = ({ show, handleClose, setRefresh }) => {
 	const [newPost, setNewPost] = useState({});
@@ -14,7 +15,7 @@ const ModalComponent = ({ show, handleClose, setRefresh }) => {
 		event.preventDefault();
 		axios({
 			method: 'POST',
-			url: 'http://localhost:8000/posts',
+			url: `${apiUrl}/posts`,
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},

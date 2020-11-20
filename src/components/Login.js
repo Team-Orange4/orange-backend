@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
+import { apiUrl } from '../config';
 
 const Login = ({ setToken }) => {
 	const [loginInfo, setLoginInfo] = useState({});
@@ -19,7 +20,7 @@ const Login = ({ setToken }) => {
 		event.preventDefault();
 		axios({
 			method: 'POST',
-			url: 'http://localhost:8000/users/login',
+			url: `${apiUrl}/users/login`,
 			data: { email: loginInfo.email, password: loginInfo.password },
 		}).then((res) => {
 			console.log(res);

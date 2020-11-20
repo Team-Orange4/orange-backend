@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { apiUrl } from '../config';
 
 const CreateAccount = () => {
 	const [regInfo, setRegInfo] = useState({});
@@ -14,7 +15,7 @@ const CreateAccount = () => {
 		event.preventDefault();
 		axios({
 			method: 'post',
-			url: 'http://localhost:8000/users/register',
+			url: `${apiUrl}/users/register`,
 			data: regInfo,
 		});
 		history.push('/');

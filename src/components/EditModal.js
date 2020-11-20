@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BootstrapModal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { apiUrl } from '../config';
 
 const EditModal = ({ show, handleClose, postId, title, body, setRefresh }) => {
 	const [editPost, setEditPost] = useState({});
@@ -14,7 +15,7 @@ const EditModal = ({ show, handleClose, postId, title, body, setRefresh }) => {
 		event.preventDefault();
 		axios({
 			method: 'PATCH',
-			url: `http://localhost:8000/posts/${postId}`,
+			url: `${apiUrl}/posts/${postId}`,
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
