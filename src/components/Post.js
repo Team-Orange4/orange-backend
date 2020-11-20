@@ -5,7 +5,7 @@ import axios from 'axios';
 import EditModal from './EditModal';
 import PostButtons from './PostButtons';
 
-const Post = ({ postId, userId, username, title, body }) => {
+const Post = ({ postId, userId, username, title, body, setRefresh }) => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
@@ -17,8 +17,7 @@ const Post = ({ postId, userId, username, title, body }) => {
 		axios({
 			method: 'DELETE',
 			url: `http://localhost:8000/posts/${postId}`,
-		});
-		window.location.reload(false);
+		}).then(() => setRefresh(true));
 	}
 
 	return (

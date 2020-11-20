@@ -26,7 +26,9 @@ const NavComponent = () => {
 							Logout
 						</button>
 					) : (
-						<Link className='btn btn-light'> Login</Link>
+						<Link className='btn btn-light' to='/'>
+							Login
+						</Link>
 					)}
 					<Nav.Link href='#profile'>Profile</Nav.Link>
 					<button className='btn btn-light' onClick={handleShow}>
