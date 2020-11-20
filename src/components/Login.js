@@ -41,7 +41,10 @@ const Login = () => {
 			data: {email: loginInfo.email, password: loginInfo.password}
 		}).then((res) => {
 			console.log(res);
-			if(res.data.accessToken){history.push("/feed")}
+			if(res.data.accessToken){
+				localStorage.setItem("token", res.data.accessToken);
+				history.push("/feed")
+				}
 			// if(res.data.accessToken){return <Redirect to="/feed"/>}
 		});
 	}

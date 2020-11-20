@@ -3,8 +3,8 @@ import React from 'react';
 const PostButtons = () => {
     return (
         <div>
-            <button>Like</button>
-            <button>comment</button>
+            <button className="btn btn-warning">Like</button>
+            <button className="btn btn-warning">comment</button>
         </div>
     );
 };
