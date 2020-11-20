@@ -11,24 +11,7 @@ const Login = () => {
 		event.preventDefault();
 		setLoginInfo({ ...loginInfo, [event.target.id]: event.target.value });
 	}
-	// function handleConfirmChange(event) {
-	// 	event.preventDefault();
-	// 	setLoginInfo({ ...loginInfo, [event.target.id]: event.target.value });
-	// 	if (event.target.value === loginInfo.password) {
-	// 		setLoginInfo({
-	// 			...loginInfo,
-	// 			[event.target.id]: event.target.value,
-	// 			valid: true,
-	// 		});
-	// 	} else {
-	// 		setLoginInfo({
-	// 			...loginInfo,
-	// 			[event.target.id]: event.target.value,
-	// 			valid: false,
-	// 			attempted: true,
-	// 		});
-	// 	}
-	// }
+
 	function handleCancel(event) {
 		setLoginInfo('');
 	}
@@ -45,7 +28,6 @@ const Login = () => {
 				localStorage.setItem('id', res.data.id);
 				history.push('/feed');
 			}
-			// if(res.data.accessToken){return <Redirect to="/feed"/>}
 		});
 	}
 
@@ -69,14 +51,7 @@ const Login = () => {
 					value={loginInfo.password}
 				/>
 				<label htmlFor='password'>Password</label>
-				{/* <input
-					type='password'
-					placeholder='Confirm password'
-					id='passwordConfirm'
-					onChange={handleConfirmChange}
-					value={loginInfo.passwordConfirm}
-				/> */}
-				{/* <label htmlFor='passwordConfirm'>Confirm password</label> */}
+
 				<button type='submit'>Login</button>
 				<button type='button' onClick={handleCancel} className='cancel'>
 					Cancel

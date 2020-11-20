@@ -5,8 +5,6 @@ import axios from 'axios';
 const Feed = () => {
 	const [post, setPost] = useState([]);
 
-	// const url = `posts`
-
 	useEffect(() => {
 		axios({
 			method: 'GET',
