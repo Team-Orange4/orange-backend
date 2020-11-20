@@ -3,7 +3,7 @@ import BootstrapModal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-const EditModal = ({ show, handleClose, postId, title, body }) => {
+const EditModal = ({ show, handleClose, postId, title, body, setRefresh }) => {
 	const [editPost, setEditPost] = useState({});
 
 	function handleChange(event) {
@@ -11,6 +11,7 @@ const EditModal = ({ show, handleClose, postId, title, body }) => {
 		setEditPost({ ...editPost, [event.target.id]: event.target.value });
 	}
 	function editYourPost(event) {
+		event.preventDefault();
 		axios({
 			method: 'PATCH',
 			url: `http://localhost:8000/posts/${postId}`,
@@ -20,6 +21,7 @@ const EditModal = ({ show, handleClose, postId, title, body }) => {
 			data: editPost,
 		});
 		handleClose();
+		setRefresh(true);
 	}
 
 	return (
