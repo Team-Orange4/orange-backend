@@ -4,7 +4,7 @@ import ModalComponent from './ModalComponent';
 import Nav from 'react-bootstrap/Nav';
 import { Link, useHistory } from 'react-router-dom';
 
-const NavComponent = () => {
+const NavComponent = ({ token, setToken }) => {
 	let history = useHistory();
 	//Jen helped us with this at codesandbox.io
 	const [show, setShow] = useState(false);
@@ -13,6 +13,7 @@ const NavComponent = () => {
 
 	function logout() {
 		localStorage.clear();
+		setToken('');
 		history.push('/');
 	}
 	return (
@@ -21,7 +22,7 @@ const NavComponent = () => {
 				<Navbar.Brand href='feed'>Orange</Navbar.Brand>
 				<Nav className='mr-auto'>
 					<Nav.Link href='feed'>Home</Nav.Link>
-					{localStorage.getItem('token') ? (
+					{token ? (
 						<button className='btn btn-light' onClick={logout}>
 							Logout
 						</button>

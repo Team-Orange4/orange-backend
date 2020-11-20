@@ -5,24 +5,21 @@ import NavComponent from './components/NavComponent';
 import Login from './components/Login';
 import CreateAccount from './components/CreateAccount';
 
-
 import './App.scss';
 
-
 function App() {
-  const [token, setToken] = useState();
+	const [token, setToken] = useState();
 
 	return (
 		<div className='App'>
-      <NavComponent />
-      <main>
-        <Route path="/" exact component={Login} />
-        <Route path="/create" component={CreateAccount} />
-        <Route path="/feed" component={Feed} />
-      </main>
+			<NavComponent token={token} setToken={setToken} />
+			<main>
+				<Route path='/' exact render={() => <Login setToken={setToken} />} />
+				<Route path='/create' component={CreateAccount} />
+				<Route path='/feed' component={Feed} />
+			</main>
 		</div>
 	);
-
 }
 
 export default App;

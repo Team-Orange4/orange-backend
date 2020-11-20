@@ -3,7 +3,7 @@ import { Link, Redirect, useHistory } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({ setToken }) => {
 	const [loginInfo, setLoginInfo] = useState({});
 	let history = useHistory();
 
@@ -26,6 +26,7 @@ const Login = () => {
 			if (res.data.accessToken) {
 				localStorage.setItem('token', res.data.accessToken);
 				localStorage.setItem('id', res.data.id);
+				setToken(res.data.accessToken);
 				history.push('/feed');
 			}
 		});
