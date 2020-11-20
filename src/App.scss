@@ -1,0 +1,39 @@
+$theme-colors: (
+	'primary': darkorange,
+);
+
+@import '~bootstrap/scss/bootstrap';
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	min-height: 100vh;
+	background-image: url('oranges.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+}
+@media only screen and (min-width: 600px) {
+	main {
+		margin-left: auto;
+		margin-right: auto;
+		width: 60%;
+	}
+}
+
+.App {
+	// display: grid;
+	// grid-template-columns: 25% auto 25%;
+	// grid-template-rows: auto;
+	/* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+}
+
+main {
+	margin-top: 75px;
+	background-color: orange;
+}
+button {
+	background-color: yellow;
+}

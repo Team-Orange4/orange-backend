@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
+import Feed from './components/Feed';
+import NavComponent from './components/NavComponent';
+import Login from './components/Login';
+import CreateAccount from './components/CreateAccount';
+
+import './App.scss';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [token, setToken] = useState();
+	const [refresh, setRefresh] = useState(true);
+	return (
+		<div className='App'>
+			<NavComponent token={token} setToken={setToken} setRefresh={setRefresh} />
+			<main>
+				<Route
+					path='/'
+					exact
+					render={() => <Login setToken={setToken} setRefresh={setRefresh} />}
+				/>
+				<Route path='/create' component={CreateAccount} />
+				<Route
+					path='/feed'
+					render={() => <Feed refresh={refresh} setRefresh={setRefresh} />}
+				/>
+			</main>
+		</div>
+	);
 }
 
 export default App;
