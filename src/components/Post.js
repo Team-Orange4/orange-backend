@@ -49,6 +49,7 @@ const Post = ({ postId, userId, username, title, body, setRefresh }) => {
 				postId={postId}
 				title={title}
 				body={body}
+				setRefresh={setRefresh}
 			/>
 		</div>
 	);
