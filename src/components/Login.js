@@ -4,7 +4,7 @@ import './Login.css';
 import axios from 'axios';
 import { apiUrl } from '../config';
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, setRefresh }) => {
 	const [loginInfo, setLoginInfo] = useState({});
 	let history = useHistory();
 
@@ -29,6 +29,7 @@ const Login = ({ setToken }) => {
 				localStorage.setItem('id', res.data.id);
 				setToken(res.data.accessToken);
 				history.push('/feed');
+				setRefresh(true);
 			}
 		});
 	}

@@ -14,7 +14,11 @@ function App() {
 		<div className='App'>
 			<NavComponent token={token} setToken={setToken} setRefresh={setRefresh} />
 			<main>
-				<Route path='/' exact render={() => <Login setToken={setToken} />} />
+				<Route
+					path='/'
+					exact
+					render={() => <Login setToken={setToken} setRefresh={setRefresh} />}
+				/>
 				<Route path='/create' component={CreateAccount} />
 				<Route
 					path='/feed'

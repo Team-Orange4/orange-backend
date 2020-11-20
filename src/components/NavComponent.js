@@ -16,6 +16,11 @@ const NavComponent = ({ token, setToken, setRefresh }) => {
 		setToken('');
 		history.push('/');
 	}
+	function home() {
+		history.push('/feed');
+		setRefresh(true);
+	}
+
 	return (
 		<div className='nav'>
 			<Navbar bg='primary' variant='dark' fixed='top' expand='md'>
@@ -23,9 +28,9 @@ const NavComponent = ({ token, setToken, setRefresh }) => {
 					Orange
 				</Navbar.Brand>
 				<Nav className='mr-auto'>
-					<Nav.Link to='/feed' as={Link}>
+					<button className='btn btn-light' onClick={home}>
 						Home
-					</Nav.Link>
+					</button>
 					{token ? (
 						<button className='btn btn-light' onClick={logout}>
 							Logout
