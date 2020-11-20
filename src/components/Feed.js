@@ -5,19 +5,25 @@ import axios from 'axios';
 const Feed = () => {
 	const [post, setPost] = useState([]);
 
-	// const url = `posts`
-
 	useEffect(() => {
 		axios({
 			method: 'GET',
-			url: 'http://localhost:8000/posts'
-		}).then((res) => setPost(res.data))
+			url: 'http://localhost:8000/posts',
+		}).then((res) => setPost(res.data));
 	}, []);
 
 	return (
-		<div >
-			{post.map((post) => {
-				return <Post title={post.title} body={post.body} />;
+		<div>
+			{post.reverse().map((post) => {
+				return (
+					<Post
+						postId={post._id}
+						userId={post.owner.ownerId}
+						username={post.owner.username}
+						title={post.title}
+						body={post.body}
+					/>
+				);
 			})}
 		</div>
 	);

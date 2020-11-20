@@ -11,7 +11,6 @@ const ModalComponent = ({ show, handleClose }) => {
 		setNewPost({ ...newPost, [event.target.id]: event.target.value });
 	}
 	function createAPost(event) {
-		event.preventDefault();
 		axios({
 			method: 'POST',
 			url: 'http://localhost:8000/posts',
