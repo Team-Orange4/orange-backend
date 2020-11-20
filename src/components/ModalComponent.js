@@ -3,7 +3,7 @@ import BootstrapModal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-const ModalComponent = ({ show, handleClose }) => {
+const ModalComponent = ({ show, handleClose, setRefresh }) => {
 	const [newPost, setNewPost] = useState({});
 
 	function handleChange(event) {
@@ -11,6 +11,7 @@ const ModalComponent = ({ show, handleClose }) => {
 		setNewPost({ ...newPost, [event.target.id]: event.target.value });
 	}
 	function createAPost(event) {
+		event.preventDefault();
 		axios({
 			method: 'POST',
 			url: 'http://localhost:8000/posts',
@@ -20,6 +21,7 @@ const ModalComponent = ({ show, handleClose }) => {
 			data: newPost,
 		});
 		handleClose();
+		setRefresh(true);
 	}
 
 	return (

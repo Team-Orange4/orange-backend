@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Post from './Post';
 import axios from 'axios';
 
-const Feed = () => {
+const Feed = ({ refresh, setRefresh }) => {
 	const [post, setPost] = useState([]);
-	const [refresh, setRefresh] = useState(true);
+
 	useEffect(() => {
 		if (refresh) {
 			axios({
