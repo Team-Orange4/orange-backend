@@ -20,9 +20,10 @@ const ModalComponent = ({ show, handleClose, setRefresh }) => {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
 			data: newPost,
+		}).then(() => {
+			handleClose();
+			setRefresh(true);
 		});
-		handleClose();
-		setRefresh(true);
 	}
 
 	return (

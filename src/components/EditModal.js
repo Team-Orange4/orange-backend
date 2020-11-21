@@ -20,9 +20,10 @@ const EditModal = ({ show, handleClose, postId, title, body, setRefresh }) => {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
 			data: editPost,
+		}).then(() => {
+			handleClose();
+			setRefresh(true);
 		});
-		handleClose();
-		setRefresh(true);
 	}
 
 	return (
