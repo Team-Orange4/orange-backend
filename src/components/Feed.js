@@ -22,6 +22,7 @@ const Feed = ({ refresh, setRefresh }) => {
 			{post.map((post) => {
 				return (
 					<Post
+						key={post._id}
 						postId={post._id}
 						userId={post.owner.ownerId}
 						username={post.owner.username}
