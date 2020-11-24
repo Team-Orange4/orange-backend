@@ -6,6 +6,9 @@ Orange is social media platform that allows users to share what they are thinkin
 ![](src/fe-photos/register-page.png)
 ![image](https://media.git.generalassemb.ly/user/31218/files/9eac3980-2e3a-11eb-9332-ae7e9e9091d1)
 
+## Original Wireframe
+![image](https://media.git.generalassemb.ly/user/31218/files/fc408600-2e3a-11eb-9186-735fb7bbda3e)
+
 ## Instillation Steps
 1. Fork and clone this repo
 2. Cd into the project directory
@@ -24,3 +27,12 @@ Orange is social media platform that allows users to share what they are thinkin
 - Creating a new post.
 - Having it so where it only shows the edit and delete button when its your post.
 - Having it so the login button only shows when you are logged out.
+
+## How to Contribute 
+All contributions are appreciated!
+1. Push your most recent development branch up to Github
+2. Create a pull request against the branch of interest or our Dev branch.
+3. Be descriptive in you pull message!
+4. Await merge or revision request!
+
+
