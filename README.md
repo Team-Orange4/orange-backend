@@ -4,6 +4,7 @@ Orange is social media platform that allows users to share what they are thinkin
 ## Screen Shots
 ![](src/fe-photos/login-page.png)
 ![](src/fe-photos/register-page.png)
+![image](https://media.git.generalassemb.ly/user/31218/files/9eac3980-2e3a-11eb-9332-ae7e9e9091d1)
 
 ## Instillation Steps
 1. Fork and clone this repo
